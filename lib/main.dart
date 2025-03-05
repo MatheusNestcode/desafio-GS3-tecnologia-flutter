@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart'; // Import necessário para controlar a orientação da tela
+import 'package:gs3_desafio_flutter/app/routes/routes.dart';
 import 'package:gs3_desafio_flutter/app/widget/tela_login/login_page.dart';
 
 void main() async {
@@ -38,7 +39,8 @@ class Gs3Flutter extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      initialRoute: Rotas.login,
+      routes: Rotas.definirRotas(),
     );
   }
 }

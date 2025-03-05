@@ -113,13 +113,18 @@ class LoginCardBoxSheetState extends State<LoginCardBox> with WidgetsBindingObse
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: isFormValid ? const Color(0xFF013972) : Colors.grey[400],
-                minimumSize: const Size(double.infinity, 50),
-              ),
-              onPressed: isFormValid ? () {} : null,
-              child: const Text("Confirmar", style: TextStyle(color: Colors.white)),
-            ),
+  style: ElevatedButton.styleFrom(
+    backgroundColor: isFormValid ? const Color(0xFF013972) : Colors.grey[400],
+    minimumSize: const Size(double.infinity, 50),
+  ),
+  onPressed: isFormValid
+      ? () {
+          Navigator.pushReplacementNamed(context, '/home');
+        }
+      : null,
+  child: const Text("Confirmar", style: TextStyle(color: Colors.white)),
+),
+
           ],
         ),
       ),

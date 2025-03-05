@@ -1,0 +1,1 @@
+export 'package:gs3_desafio_flutter/app/widget/home/pages/home_page.dart';
