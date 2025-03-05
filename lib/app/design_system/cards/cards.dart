@@ -1,0 +1,1 @@
+export 'card_tela_login.dart';

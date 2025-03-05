@@ -1,0 +1,1 @@
+export 'package:gs3_desafio_flutter/app/widget/tela_login/pages/screen_login.dart';

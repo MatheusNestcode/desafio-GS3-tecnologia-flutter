@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "925578312904",
+    "project_id": "gs3-tecnologia",
+    "storage_bucket": "gs3-tecnologia.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925578312904:android:f6bf1ebc008a7e4a5c39fd",
+        "android_client_info": {
+          "package_name": "com.example.gs3_desafio_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925578312904-cem8ptj9585ui5on4gashbh08s0pbv1o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gs3_desafio_flutter",
+            "certificate_hash": "d60876669839a01e1f312b907a04faab6606c4b0"
+          }
+        },
+        {
+          "client_id": "925578312904-min5dtn5gm6a9l2gckfr130cpbarl9tp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmKS962GdHidYNLlNVHoa582BCtll56x8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925578312904-min5dtn5gm6a9l2gckfr130cpbarl9tp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "925578312904-u2nv547d75adjsmlbpstfneevf52outt.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.gs3DesafioFlutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
