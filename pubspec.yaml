@@ -1,55 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';ccidentally published to
-import 'package:gs3_desafio_flutter/app/domain/entities/transaction.dart';ges.
-import 'package:gs3_desafio_flutter/app/domain/usecases/get_transactions_firebase_usecase.dart';
+name: gs3_desafio_flutter
+description: "A new Flutter project."
 
-class HomeController extends ChangeNotifier { number for your application.
-  final GetTransactionsFirebaseUseCase getTransactionsUseCase;2.43
-  final FirebaseAuth _auth = FirebaseAuth.instance; a +.
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;tter
-# build by specifying --build-name and --build-number, respectively.
-  String selectedCard = "5621";d as versionName while build-number used as versionCode.
-  String userName = "Cliente";ioning at https://developer.android.com/studio/publish/versioning
-  List<AppTransaction> transactions = [];hortVersionString while build-number is used as CFBundleVersion.
-# Read more about iOS versioning at
-  HomeController(this.getTransactionsUseCase) {ocumentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-    fetchUserData();name is used as the major, minor, and patch parts
-    updateTransactions(); versions while build-number is used as the build suffix.
-  }sion: 1.0.0+1
+publish_to: 'none'
 
-  Future<void> fetchUserData() async {
-    try {
-      String? userId = _auth.currentUser?.uid;
-      if (userId != null) {r package needs in order to work.
-        DocumentSnapshot userDoc = await _firestore.collection("users").doc(userId).get();your package dependencies to the latest versions
-        if (userDoc.exists && userDoc.data() != null) {grade --major-versions`. Alternatively,
-          Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;ers below to
-          userName = userData["name"] ?? "Cliente"; dependencies have newer
-          notifyListeners();
-        }
-      }
-    } catch (e) {flutter
-      print("Erro ao buscar nome do usuário: $e");tino_icons: ^1.0.8
-    }^3.12.1
-  }
-ud_firestore: ^5.6.5
-  void changeCard(String cardNumber) {hared_preferences: ^2.5.2
-    selectedCard = cardNumber;  provider: ^6.0.5
-    updateTransactions();
-    notifyListeners();
-  }
+version: 1.0.0+1
 
-  void updateTransactions() async {
-    transactions = await getTransactionsUseCase(selectedCard);
-    notifyListeners();  # The "flutter_lints" package below contains a set of recommended lints to
-  }provided by the package is
-}ons.yaml` file located at the root of your
-# following page: https://dart.dev/tools/pub/pubspec
+environment:
+  sdk: '>=3.7.0 <4.0.0'
 
-# The following section is specific to Flutter packages.
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # Firebase
+  firebase_core: ^2.25.4
+  firebase_auth: ^4.19.1
+  cloud_firestore: ^4.16.1
+
+  # Gerenciamento de Estado
+  provider: 6.1.2
+
+  # Armazenamento Local
+  shared_preferences: ^2.2.3
+
+  # Formatação de CPF e outros dados
+  flutter_multi_formatter: ^2.12.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1
+
 flutter:
   uses-material-design: true
+
   assets:
     - lib/assets/fundo1.jpg
     - lib/assets/fundo2.jpg
