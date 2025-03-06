@@ -36,7 +36,6 @@ class LoginCardBoxSheetState extends State<LoginCardBox> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       cpfController.text = prefs.getString('cpf') ?? '';
-      senhaController.text = prefs.getString('senha') ?? '';
     });
   }
 
