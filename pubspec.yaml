@@ -66,6 +66,8 @@ flutter:
     - lib/assets/fundo2.jpg
     - lib/assets/fundo3.jpg
     - lib/assets/Logo-sem-fundo.png
+    - lib/app/design_system/creditCard/assets/visa.png
+    - lib/app/design_system/creditCard/assets/master.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

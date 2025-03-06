@@ -31,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Fundo com imagem
           Container(
             width: double.infinity,
             decoration: BoxDecoration(
@@ -41,27 +40,18 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
-          // Conteúdo principal
           SafeArea(
             child: SingleChildScrollView(
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // Espaçamento antes do logo
                     SizedBox(height: 35), 
-                
-                    // Logo centralizada
                     Image.asset(
                       "lib/assets/Logo-sem-fundo.png",
-                      width: 200, // Tamanho do logo (ajuste conforme necessário)
+                      width: 200,
                       height: 150, 
-                      // Tamanho do logo (ajuste conforme necessário)
                     ),
-                
-                  
-                
-                    // Texto "Great Services, Smart Solutions"
                     Text(
                       "Great Services, Smart Solutions",
                       style: TextStyle(
@@ -70,16 +60,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 150),
-                
-                    // Botão Entrar
                     GestureDetector(
                       onTap: () {
                         showModalBottomSheet(
-                  context: context,
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  builder: (context) => LoginCardBox(),
-                  );                  
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) => LoginCardBox(),
+                        );                  
                       },
                       child: Column(
                         children: [
@@ -102,24 +90,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 138),
-                
-                    // Botões inferiores (agora dentro de um Expanded)
-                   SingleChildScrollView(
+                    SingleChildScrollView(
                       padding: EdgeInsets.only(left: 20, right: 20),
-                      scrollDirection: Axis.horizontal, // Permite rolagem se necessário
+                      scrollDirection: Axis.horizontal,
                       child: Wrap(
                         alignment: WrapAlignment.center,
-                        spacing: 12, // Espaçamento entre os botões
-                        runSpacing: 10, // Espaço entre linhas caso os botões quebrem
+                        spacing: 12,
+                        runSpacing: 10,
                         children: [
-                          CardButton( icon: Icons.credit_card, label: "Solicitar cartão"),
-                          CardButton(icon: Icons.search, label:  "Acompanhar solicitação"),
-                          CardButton(icon: Icons.help_outline, label:  "Perguntas frequentes"),
-                          CardButton(icon: Icons.phone, label:  "Central de atendimento"),
+                          CardButton(icon: Icons.credit_card, label: "Solicitar cartão"),
+                          CardButton(icon: Icons.search, label: "Acompanhar solicitação"),
+                          CardButton(icon: Icons.help_outline, label: "Perguntas frequentes"),
+                          CardButton(icon: Icons.phone, label: "Central de atendimento"),
                         ],
                       ),
                     ),
-                    SizedBox(height: 50), // Ajuste o espaçamento final
+                    SizedBox(height: 50),
                   ],
                 ),
               ),
