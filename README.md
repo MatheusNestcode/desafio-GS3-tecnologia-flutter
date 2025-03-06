@@ -1,6 +1,8 @@
 # gs3_desafio_flutter
 
-A new Flutter project.
+login e senha para logar no app 
+CPF: 04306018197
+SENHA: senha1
 
 ## Getting Started
 
