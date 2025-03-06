@@ -40,7 +40,7 @@ class CreditCardWidget extends StatelessWidget {
             Row(
               children: [
                 Image.asset(
-                  "$bandeira",
+                  bandeira,
                   width: 88,
                   height: 56,
                 ),
