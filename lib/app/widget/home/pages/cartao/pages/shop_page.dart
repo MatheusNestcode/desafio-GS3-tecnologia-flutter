@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FaturaPage extends StatelessWidget {
-  const FaturaPage({super.key});
+class ShopPage extends StatelessWidget {
+  const ShopPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +11,10 @@ class FaturaPage extends StatelessWidget {
                     icon: const Icon(Icons.menu, color: Colors.black),
                     onPressed: () {},
                   ), 
-        title: const Text("Fatura")),
-      body: const Center(child: Text("Tela da Fatura em construção")),
+        title: const Text("Shop")),
+      body: const Center(
+        child: Text("Tela do Shop em construção"),
+      ),
     );
   }
 }

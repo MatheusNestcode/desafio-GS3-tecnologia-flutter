@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gs3_desafio_flutter/app/design_system/creditCard/util/colors.dart';
 
-class CreditCardWidget extends StatelessWidget {
+class CreditCardWidget extends StatefulWidget {
   final String cardName;
   final String cardNumber;
   final String bestPurchaseDay;
@@ -20,6 +20,13 @@ class CreditCardWidget extends StatelessWidget {
   });
 
   @override
+  _CreditCardWidgetState createState() => _CreditCardWidgetState();
+}
+
+class _CreditCardWidgetState extends State<CreditCardWidget> {
+  bool _isHidden = true;
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 301,
@@ -27,7 +34,7 @@ class CreditCardWidget extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         gradient: LinearGradient(
-          colors: colorsCards,
+          colors: widget.colorsCards,
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
@@ -38,33 +45,50 @@ class CreditCardWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Image.asset(
-                  "$bandeira",
-                  width: 88,
-                  height: 56,
-                ),
-                const SizedBox(width: 16),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    Text(
-                      '**** ${cardNumber.substring(cardNumber.length - 4)}',
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        letterSpacing: 2,
-                      ),
+                    Image.asset(
+                      widget.bandeira,
+                      width: 88,
+                      height: 56,
                     ),
-                    const SizedBox(height: 7),
-                    Text(
-                      cardName,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
+                    const SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          '**** ${widget.cardNumber.substring(widget.cardNumber.length - 4)}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                            letterSpacing: 2,
+                          ),
+                        ),
+                        const SizedBox(height: 7),
+                        Text(
+                          widget.cardName,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
+                ),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isHidden = !_isHidden;
+                    });
+                  },
+                  child: Icon(
+                    _isHidden ? Icons.visibility_off : Icons.visibility,
+                    color: Colors.white,
+                    size: 22,
+                  ),
                 ),
               ],
             ),
@@ -81,7 +105,7 @@ class CreditCardWidget extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 8),
                     ),
                     Text(
-                      availableLimit,
+                      _isHidden ? '***' : widget.availableLimit,
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
@@ -94,7 +118,7 @@ class CreditCardWidget extends StatelessWidget {
                       style: TextStyle(color: Colors.white, fontSize: 8),
                     ),
                     Text(
-                      bestPurchaseDay,
+                      widget.bestPurchaseDay,
                       style: const TextStyle(color: Colors.white, fontSize: 16),
                     ),
                   ],
