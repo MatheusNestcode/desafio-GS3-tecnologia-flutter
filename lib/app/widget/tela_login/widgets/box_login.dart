@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gs3_desafio_flutter/app/presentation/controllers/login_controller.dart';
 
 class LoginCardBox extends StatefulWidget {
@@ -24,10 +23,17 @@ class LoginCardBoxSheetState extends State<LoginCardBox> {
   void initState() {
     super.initState();
     _loadSavedData();
+
+    // Adiciona listeners para atualizar a UI ao digitar
+    cpfController.addListener(_updateFormValidity);
+    senhaController.addListener(_updateFormValidity);
   }
 
   @override
   void dispose() {
+    cpfController.removeListener(_updateFormValidity);
+    senhaController.removeListener(_updateFormValidity);
+    
     cpfController.dispose();
     senhaController.dispose();
     super.dispose();
@@ -35,14 +41,19 @@ class LoginCardBoxSheetState extends State<LoginCardBox> {
 
   Future<void> _loadSavedData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      cpfController.text = prefs.getString('cpf') ?? '';
-    });
+    cpfController.text = prefs.getString('cpf') ?? '';
+
+    // Atualiza o estado para refletir a mudança na UI
+    setState(() {});
   }
 
   Future<void> _saveData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('cpf', cpfController.text);
+  }
+
+  void _updateFormValidity() {
+    setState(() {}); // Garante que a UI reconheça mudanças nos campos
   }
 
   Future<void> _login(BuildContext context) async {
@@ -116,8 +127,7 @@ class LoginCardBoxSheetState extends State<LoginCardBox> {
                 keyboardType: TextInputType.number,
                 decoration: const InputDecoration(labelText: "CPF"),
                 onChanged: (value) {
-                  setState(() {});
-                  _saveData();
+                  _saveData(); // Apenas salvar, sem `setState()`
                 },
               ),
               const SizedBox(height: 16),

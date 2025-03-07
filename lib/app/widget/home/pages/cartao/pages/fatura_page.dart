@@ -6,7 +6,12 @@ class FaturaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Fatura")),
+      appBar: AppBar(
+       leading: IconButton(
+                    icon: const Icon(Icons.menu, color: Colors.black),
+                    onPressed: () {},
+                  ), 
+        title: const Text("Fatura")),
       body: const Center(child: Text("Tela da Fatura em construção")),
     );
   }

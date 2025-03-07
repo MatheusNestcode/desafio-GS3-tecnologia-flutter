@@ -9,8 +9,8 @@ class CardButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 95,
-      height: 87,
+      width: 110,
+      height: 100,
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
@@ -20,14 +20,13 @@ class CardButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, color: Colors.white, size: 28),
-          const SizedBox(height: 4),
-          Flexible(
+          const SizedBox(height: 6),
+          Expanded(
             child: Text(
               label,
               style: const TextStyle(color: Colors.white, fontSize: 14),
               textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 2,
+              softWrap: true,
             ),
           ),
         ],
