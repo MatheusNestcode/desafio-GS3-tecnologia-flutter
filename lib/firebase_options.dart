@@ -25,9 +25,15 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -67,26 +73,5 @@ class DefaultFirebaseOptions {
     androidClientId: '925578312904-cem8ptj9585ui5on4gashbh08s0pbv1o.apps.googleusercontent.com',
     iosClientId: '925578312904-u2nv547d75adjsmlbpstfneevf52outt.apps.googleusercontent.com',
     iosBundleId: 'com.example.gs3DesafioFlutter',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBMusJshtGx4uopm9908pUt0nSmDXDohys',
-    appId: '1:925578312904:ios:7ba1a1968fa7bb3c5c39fd',
-    messagingSenderId: '925578312904',
-    projectId: 'gs3-tecnologia',
-    storageBucket: 'gs3-tecnologia.firebasestorage.app',
-    androidClientId: '925578312904-cem8ptj9585ui5on4gashbh08s0pbv1o.apps.googleusercontent.com',
-    iosClientId: '925578312904-u2nv547d75adjsmlbpstfneevf52outt.apps.googleusercontent.com',
-    iosBundleId: 'com.example.gs3DesafioFlutter',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCkshRzX-u_rKj26WSUvBJ07wAvfJuHmQk',
-    appId: '1:925578312904:web:d7cfdc49eb687a2e5c39fd',
-    messagingSenderId: '925578312904',
-    projectId: 'gs3-tecnologia',
-    authDomain: 'gs3-tecnologia.firebaseapp.com',
-    storageBucket: 'gs3-tecnologia.firebasestorage.app',
-    measurementId: 'G-0JB8K4TB61',
   );
 }

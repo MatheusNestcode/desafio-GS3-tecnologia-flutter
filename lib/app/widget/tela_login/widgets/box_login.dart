@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:gs3_desafio_flutter/app/presentation/controllers/login_controller.dart';
 
 class LoginCardBox extends StatefulWidget {
@@ -51,11 +52,21 @@ class LoginCardBoxSheetState extends State<LoginCardBox> {
     });
 
     final loginController = Provider.of<LoginController>(context, listen: false);
-    await loginController.login(context);
-
-    if (loginController.errorMessage != null) {
+    
+    try {
+      bool success = await loginController.login(cpfController.text.trim(), senhaController.text.trim());
+      
+      if (success) {
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, '/home');
+        }
+      } else {
+        setState(() {
+          errorMessage = loginController.errorMessage;
+        });
+      }
+    } finally {
       setState(() {
-        errorMessage = loginController.errorMessage;
         isLoading = false;
       });
     }
@@ -126,10 +137,6 @@ class LoginCardBoxSheetState extends State<LoginCardBox> {
                     },
                   ),
                 ),
-                onChanged: (value) {
-                  setState(() {});
-                  _saveData();
-                },
               ),
               if (errorMessage != null)
                 Padding(

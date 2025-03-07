@@ -34,7 +34,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => controller.changeCard("5621"),
-                    child: CreditCardWidget(
+                    child: const CreditCardWidget(
                       bandeira: "lib/app/design_system/creditCard/assets/visa.png",
                       cardName: "GS3 TEC",
                       cardNumber: "5621",
@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(width: 12),
                   GestureDetector(
                     onTap: () => controller.changeCard("4567"),
-                    child: CreditCardWidget(
+                    child: const CreditCardWidget(
                       bandeira: "lib/app/design_system/creditCard/assets/master.png",
                       cardName: "GS3 TEC2",
                       cardNumber: "4567",

@@ -3,7 +3,7 @@ import 'package:gs3_desafio_flutter/app/design_system/cards/cards.dart';
 import 'package:gs3_desafio_flutter/app/widget/tela_login/widgets/box_login.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: LoginScreen(),
     );
@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
         children: [
           Container(
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("lib/assets/fundo1.jpg"),
                 fit: BoxFit.cover,
@@ -46,28 +46,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(height: 35), 
+                    const SizedBox(height: 35),
                     Image.asset(
                       "lib/assets/Logo-sem-fundo.png",
                       width: 200,
-                      height: 150, 
+                      height: 150,
                     ),
-                    Text(
+                    const Text(
                       "Great Services, Smart Solutions",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white70,
                       ),
                     ),
-                    SizedBox(height: 150),
+                    const SizedBox(height: 150),
                     GestureDetector(
                       onTap: () {
                         showModalBottomSheet(
                           context: context,
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
-                          builder: (context) => LoginCardBox(),
-                        );                  
+                          builder: (context) => const LoginCardBox(),
+                        );
                       },
                       child: Column(
                         children: [
@@ -76,22 +76,22 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 100,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 1,),
+                              border: Border.all(color: Colors.white, width: 1),
                             ),
-                            padding: EdgeInsets.all(20),
-                            child: Icon(Icons.add, color: Colors.white, size: 30),
+                            padding: const EdgeInsets.all(20),
+                            child: const Icon(Icons.add, color: Colors.white, size: 30),
                           ),
-                          SizedBox(height: 15),
-                          Text(
+                          const SizedBox(height: 15),
+                          const Text(
                             "Entrar",
                             style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(height: 138),
-                    SingleChildScrollView(
-                      padding: EdgeInsets.only(left: 20, right: 20),
+                    const SizedBox(height: 138),
+                    const SingleChildScrollView(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       scrollDirection: Axis.horizontal,
                       child: Wrap(
                         alignment: WrapAlignment.center,
@@ -105,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
-                    SizedBox(height: 50),
+                    const SizedBox(height: 50),
                   ],
                 ),
               ),

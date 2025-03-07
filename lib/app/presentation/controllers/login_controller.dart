@@ -1,39 +1,44 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginController extends ChangeNotifier {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final TextEditingController cpfController = TextEditingController();
-  final TextEditingController senhaController = TextEditingController();
-
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   bool isLoading = false;
   String? errorMessage;
 
-  Future<void> login(BuildContext context) async {
-    isLoading = true;
-    errorMessage = null;
-    notifyListeners();
-
-    try {
-      String cpf = cpfController.text.trim();
-      String senha = senhaController.text.trim();
-
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: "$cpf@email.com",
-        password: senha,
-      );
-
-      if (userCredential.user != null) {
-        Navigator.pushReplacementNamed(context, '/home');
-      }
-    } catch (e) {
-      errorMessage = "Erro ao fazer login: $e";
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(errorMessage!)),
-      );
+  Future<bool> login(String cpf, String senha) async {
+    if (cpf.isEmpty || senha.isEmpty) {
+      errorMessage = "CPF e senha são obrigatórios.";
+      notifyListeners();
+      return false;
     }
 
-    isLoading = false;
-    notifyListeners();
+    try {
+      QuerySnapshot<Map<String, dynamic>> result = await _firestore
+          .collection("users")
+          .where("cpf", isEqualTo: cpf)
+          .limit(1)
+          .get();
+
+      if (result.docs.isEmpty) {
+        errorMessage = "CPF não encontrado.";
+        notifyListeners();
+        return false;
+      }
+
+      var userData = result.docs.first.data();
+
+      if (userData["password"] != senha) {
+        errorMessage = "Senha incorreta.";
+        notifyListeners();
+        return false;
+      }
+
+      return true;
+    } catch (e) {
+      errorMessage = "Erro ao fazer login: $e";
+      notifyListeners();
+      return false;
+    }
   }
 }
