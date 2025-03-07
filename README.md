@@ -1,8 +1,12 @@
 # gs3_desafio_flutter
+App desenvolvido para android devido a nao tem um MAC disponivel 
 
 login e senha para logar no app 
 CPF: 04306018197
 SENHA: senha1
+
+As informaçoes de login e senha estão no banco de dados no firebase 
+os dados de compras estão sendo buscados diretamente do banco de dados e vinculado especificamente para cada cartao 
 
 ## Getting Started
 
