@@ -1,0 +1,10 @@
+platform :ios, '12.0'
+
+ENV['CMAKE_GENERATOR'] = 'Unix Makefiles'
+
+target 'Runner' do
+  use_frameworks!
+  use_modular_headers!
+
+  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+end
