@@ -6,7 +6,7 @@ class GetTransactionsUseCase {
 
   GetTransactionsUseCase(this.repository);
 
-  Future<List<AppTransaction>> call(String cardNumber) async {
-    return await repository.getTransactions(cardNumber);
+  Future<List<AppTransaction>> call(String userId, String cardNumber) async {
+    return await repository.getTransactions(userId, cardNumber);
   }
 }

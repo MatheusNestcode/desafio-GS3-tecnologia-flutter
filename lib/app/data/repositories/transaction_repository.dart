@@ -11,10 +11,11 @@ class TransactionRepositoryFirebase {
         );
   }
 
-  Future<List<AppTransaction>> getTransactions(String cardNumber) async {
+  Future<List<AppTransaction>> getTransactions(String userId, String cardNumber) async {
     QuerySnapshot snapshot = await firestore
         .collection("transactions")
-        .where("cardNumber", isEqualTo: cardNumber)
+        .where("userId", isEqualTo: userId) // Filtra pelo usuário
+        .where("cardNumber", isEqualTo: cardNumber) // Filtra pelo número do cartão
         .get();
 
     return snapshot.docs
