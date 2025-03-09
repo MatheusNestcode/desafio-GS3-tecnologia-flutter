@@ -11,26 +11,31 @@ class HomeController extends ChangeNotifier {
 
   String selectedCard = "5621";
   String userName = "Cliente";
+  String? userId;
   List<AppTransaction> transactions = [];
 
   HomeController(this.getTransactionsUseCase) {
     fetchUserData();
-    updateTransactions();
   }
 
   Future<void> fetchUserData() async {
     try {
-      String? userId = _auth.currentUser?.uid;
-      if (userId != null) {
+      User? user = _auth.currentUser;
+      if (user != null) {
+        userId = user.uid; // Pegando o UID do usuário autenticado no FirebaseAuth
+
         DocumentSnapshot userDoc = await _firestore.collection("users").doc(userId).get();
         if (userDoc.exists && userDoc.data() != null) {
           Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
           userName = userData["name"] ?? "Cliente";
-          notifyListeners();
         }
+        
+        await updateTransactions(); // Atualizar transações após obter o userId
       }
     } catch (e) {
-      print("Erro ao buscar nome do usuário: $e");
+      print("Erro ao buscar dados do usuário: $e");
+    } finally {
+      notifyListeners();
     }
   }
 
@@ -40,8 +45,10 @@ class HomeController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void updateTransactions() async {
-    transactions = await getTransactionsUseCase(selectedCard);
-    notifyListeners();
+  Future<void> updateTransactions() async {
+    if (userId != null) {
+      transactions = await getTransactionsUseCase(userId!, selectedCard);
+      notifyListeners();
+    }
   }
 }
