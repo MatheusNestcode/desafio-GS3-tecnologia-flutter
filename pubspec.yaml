@@ -27,6 +27,8 @@ dependencies:
 
   # Formatação de CPF e outros dados
   flutter_multi_formatter: ^2.12.1
+  intl: ^0.20.2
+
   
 
 dev_dependencies:
