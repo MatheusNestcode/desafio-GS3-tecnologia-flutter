@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 import 'package:gs3_desafio_flutter/app/presentation/controllers/home_controller.dart';
 import 'package:gs3_desafio_flutter/app/design_system/creditCard/credit_card_container.dart';
 import 'package:gs3_desafio_flutter/app/design_system/creditCard/util/colors.dart';
@@ -145,25 +146,82 @@ class HomePage extends StatelessWidget {
                           child: Text("Nenhuma transação encontrada"),
                         ),
                       )
-                    : ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: controller.transactions.length,
-                        itemBuilder: (context, index) {
-                          final transaction = controller.transactions[index];
-                          return ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Colors.grey.shade200,
-                              child: Icon(
-                                IconData(transaction.icon, fontFamily: 'MaterialIcons'),
-                                color: const Color(0xFF346CBD),
-                              ),
-                            ),
-                            title: Text(transaction.title),
-                            subtitle: Text(transaction.date, style: const TextStyle(color: Color(0xFF2890CF))),
-                            trailing: Text(transaction.amount),
-                          );
-                        },
+                    : SizedBox(
+                        height: 250,
+                        child: ListView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: controller.groupedTransactions.length,
+                          itemBuilder: (context, index) {
+                            final transactionGroup = controller.groupedTransactions[index];
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: 5),
+                                  child: Text(
+                                    transactionGroup.date,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF2890CF),
+                                    ),
+                                  ),
+                                ),
+                                Column(
+                                  children: List.generate(
+                                    transactionGroup.transactions.length,
+                                    (i) {
+                                      final transaction = transactionGroup.transactions[i];
+                                      return Column(
+                                        children: [
+                                          ListTile(
+                                            leading: Container(
+                                              width: 45,
+                                              height: 45,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(12),
+                                                color: const Color.fromRGBO(229, 229, 229, 0.2),
+                                              ),
+                                              child: Icon(
+                                                IconData(transaction.icon, fontFamily: 'MaterialIcons'),
+                                                color: const Color(0xFF346CBD),
+                                              ),
+                                            ),
+                                            title: Text(
+                                              transaction.title,
+                                              style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                                            ),
+                                            subtitle: Text(
+                                              DateFormat("dd MMM 'às' HH:mm", "pt_BR").format(transaction.dateTime),
+                                              style: const TextStyle(fontSize: 12, color: Color(0xFF828285)),
+                                            ),
+                                            trailing: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  transaction.amount,
+                                                  style: const TextStyle(fontSize: 14, color: Colors.black),
+                                                ),
+                                                if (transaction.installments.isNotEmpty)
+                                                  Text(
+                                                    transaction.installments,
+                                                    style: const TextStyle(fontSize: 12, color: Color(0xFF828285)),
+                                                  ),
+                                              ],
+                                            ),
+                                          ),
+                                          if (i < transactionGroup.transactions.length - 1)
+                                            const Divider(color: Colors.white54, thickness: 1),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
                       ),
               ],
             ),
