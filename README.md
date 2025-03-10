@@ -1,59 +1,75 @@
-# gs3_desafio_flutter
-App desenvolvido para android devido a nao tem um MAC disponivel 
+# GS3 Desafio Flutter
 
-login e senha para logar no app 
-CPF: 04306018197
-SENHA: senha1
+> 🕊️ **Dedico a conclusão deste desafio em honra ao meu véio, Marcos Tadeu, por sempre me apoiar e fazer de mim o homem que sou hoje. Graças a ele, cheguei até aqui. Espero que o senhor esteja se orgulhando aí de cima. Te amo muito!** ❤️  
 
-As informaçoes de login e senha estão no banco de dados no firebase 
-os dados de compras estão sendo buscados diretamente do banco de dados e vinculado especificamente para cada cartao 
+Aplicativo desenvolvido para Android como parte do desafio GS3. Este projeto demonstra a implementação de funcionalidades específicas utilizando o Flutter.
 
-## Getting Started
+## 🚀 Tecnologias Utilizadas
 
-This project is a starting point for a Flutter application.
+- **Flutter**: Framework principal para o desenvolvimento do aplicativo.
+- **Firebase**: Utilizado para autenticação e banco de dados em tempo real.
+- **Dart**: Linguagem de programação utilizada no desenvolvimento com Flutter.
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠 Funcionalidades
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Autenticação de Usuário**: Login seguro utilizando CPF e senha.
+- **Gerenciamento de Compras**: Visualização e gerenciamento de dados de compras vinculados a cada cartão de usuário.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-<View
-android:id="@+id/gs3"
-android:layout_width="203.09dp"
-android:layout_height="82.89dp"
-android:layout_alignParentLeft="true"
-android:layout_marginLeft="84.59dp"
-android:layout_alignParentTop="true"
-android:layout_marginTop="79dp"
-android:background="#FFFFFF"
-/>
+## 🏗 Como Executar o Projeto
 
+1. **Clone o repositório**:
 
+   ```bash
+   git clone https://github.com/MatheusNestcode/desafio-GS3-tecnologia-flutter.git
+   ```
 
-<View
-android:id="@+id/tecnologia"
-android:layout_width="204.34dp"
-android:layout_height="37.05dp"
-android:layout_alignParentLeft="true"
-android:layout_marginLeft="85.22dp"
-android:layout_alignParentTop="true"
-android:layout_marginTop="169.93dp"
-android:background="#FFFFFF"
-/>
+2. **Navegue até o diretório do projeto**:
 
+   ```bash
+   cd desafio-GS3-tecnologia-flutter
+   ```
 
+3. **Instale as dependências**:
 
-<View
-android:id="@+id/rectangle_1"
-android:layout_width="5.65dp"
-android:layout_height="15.57dp"
-android:layout_alignParentLeft="true"
-android:layout_marginLeft="145dp"
-android:layout_alignParentTop="true"
-android:layout_marginTop="120.32dp"
-android:background="#45A1E7"
-/>
+   ```bash
+   flutter pub get
+   ```
 
+4. **Execute o aplicativo**:
+
+   ```bash
+   flutter run
+   ```
+
+   > **Nota**: Certifique-se de ter um dispositivo Android conectado ou um emulador em execução.
+
+## 🔑 Como Logar no Sistema
+
+Utilize as seguintes credenciais para acessar o aplicativo:
+
+- **CPF**: `043.060.181-97`
+- **Senha**: `senha1`
+
+> **Importante**: As informações de login e senha estão armazenadas no banco de dados Firebase. Os dados de compras são buscados diretamente do banco de dados e vinculados especificamente a cada cartão.
+
+## 📂 Estrutura do Projeto
+
+```
+📦 desafio-GS3-tecnologia-flutter
+ ┣ 📂 lib
+ ┃ ┣ 📜 main.dart
+ ┃ ┣ 📂 screens
+ ┃ ┣ 📂 components
+ ┣ 📂 assets
+ ┣ 📜 pubspec.yaml
+ ┣ 📜 README.md
+```
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests.
+
+## 📜 Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+```
