@@ -80,6 +80,30 @@ class HomePage extends StatelessWidget {
                           colorsCards: masterCardColors,
                         ),
                       ),
+                      const SizedBox(width: 12),
+                       GestureDetector(
+                        onTap: () => controller.changeCard("1234"),
+                        child: const CreditCardWidget(
+                          bandeira: "lib/app/design_system/creditCard/assets/master.png",
+                          cardName: "GS3 Black",
+                          cardNumber: "1234",
+                          bestPurchaseDay: "25",
+                          availableLimit: "R\$ 17.000.000,00",
+                          colorsCards: blackCardColors,
+                        ),
+                      ),
+                       const SizedBox(width: 12),
+                       GestureDetector(
+                        onTap: () => controller.changeCard("4321"),
+                        child: const CreditCardWidget(
+                          bandeira: "lib/app/design_system/creditCard/assets/visa.png",
+                          cardName: "GS3 Black unique",
+                          cardNumber: "4321",
+                          bestPurchaseDay: "25",
+                          availableLimit: "R\$ 17.000.000,00",
+                          colorsCards: blackCardColors,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -147,7 +171,7 @@ class HomePage extends StatelessWidget {
                         ),
                       )
                     : SizedBox(
-                        height: 210,
+                        height: MediaQuery.of(context).size.height * 0.4,
                         child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           itemCount: controller.groupedTransactions.length,
