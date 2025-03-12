@@ -147,7 +147,7 @@ class HomePage extends StatelessWidget {
                         ),
                       )
                     : SizedBox(
-                        height: 250,
+                        height: 210,
                         child: ListView.builder(
                           physics: const BouncingScrollPhysics(),
                           itemCount: controller.groupedTransactions.length,
